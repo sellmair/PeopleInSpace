@@ -3,6 +3,7 @@ buildscript {
     println(kotlinVersion)
 
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
         gradlePluginPortal()
@@ -29,6 +30,7 @@ allprojects {
     apply(plugin = "org.jmailen.kotlinter")
 
     repositories {
+        mavenLocal()
         google()
         mavenCentral()
         maven(url = "https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-js-wrappers")
