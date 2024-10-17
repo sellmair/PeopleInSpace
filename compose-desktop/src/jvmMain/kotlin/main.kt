@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -20,6 +21,7 @@ import coil3.compose.AsyncImage
 import com.surrus.common.di.initKoin
 import com.surrus.common.remote.Assignment
 import com.surrus.common.remote.PeopleInSpaceApi
+import org.jetbrains.compose.reload.HotReload
 
 private val koin = initKoin(enableNetworkLogs = true).koin
 
@@ -42,23 +44,24 @@ fun main() = application {
         title = "People In Space"
     ) {
 
-        Row(Modifier.fillMaxSize()) {
+        HotReload {
+            Row(Modifier.fillMaxSize()) {
 
-            Box(Modifier.width(250.dp).fillMaxHeight().background(color = Color.LightGray)) {
-                PersonList(peopleState, selectedPerson) {
-                    selectedPerson = it
+                Box(Modifier.width(250.dp).fillMaxHeight().background(color = Color.LightGray)) {
+                    PersonList(peopleState, selectedPerson) {
+                        selectedPerson = it
+                    }
                 }
-            }
 
-            Spacer(modifier = Modifier.width(1.dp).fillMaxHeight())
+                Spacer(modifier = Modifier.width(1.dp).fillMaxHeight())
 
-            Box(Modifier.fillMaxHeight()) {
-                selectedPerson?.let {
-                    PersonDetailsView(it)
+                Box(Modifier.fillMaxHeight()) {
+                    selectedPerson?.let {
+                        PersonDetailsView(it)
+                    }
                 }
             }
         }
-
     }
 }
 
@@ -129,3 +132,5 @@ fun PersonDetailsView(person: Assignment) {
         }
     }
 }
+
+

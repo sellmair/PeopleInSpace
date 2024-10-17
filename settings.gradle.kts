@@ -4,6 +4,7 @@ pluginManagement {
             google()
             mavenCentral()
             gradlePluginPortal()
+            maven("https://repo.sellmair.io")
         }
     }
 
